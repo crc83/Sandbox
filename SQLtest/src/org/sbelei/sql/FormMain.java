@@ -1,18 +1,25 @@
 package org.sbelei.sql;
 
 import java.awt.EventQueue;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
 import javax.swing.BoxLayout;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JSplitPane;
+import javax.swing.JScrollPane;
+import javax.swing.table.TableColumn;
 
 public class FormMain {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JScrollPane scrollPane;
 	private JTable table;
+	
+	private AccessDataManager adm;
 
 	/**
 	 * Launch the application.
@@ -35,6 +42,22 @@ public class FormMain {
 	 */
 	public FormMain() {
 		initialize();
+		adm = new AccessDataManager();
+		try { 
+			adm.initConnection();
+			ResultSet rs = adm.select("SELECT * FROM Employees");
+			String[] headers;
+			headers = adm.composeHeaders(rs);
+			for (int i=0;i<headers.length;i++){
+				TableColumn newCol =new TableColumn();
+				newCol.setHeaderValue(headers[i]);
+				table.addColumn(newCol);
+			}
+			table.
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -54,8 +77,11 @@ public class FormMain {
 		splitPane.setLeftComponent(textField);
 		textField.setColumns(10);
 		
+		scrollPane = new JScrollPane();
+		splitPane.setRightComponent(scrollPane);
+		
 		table = new JTable();
-		splitPane.setRightComponent(table);
+		scrollPane.setViewportView(table);
 	}
 
 }
