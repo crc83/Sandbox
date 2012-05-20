@@ -1,10 +1,7 @@
 package org.sbelei.springdemo;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.FileSystemResource;
 
 public class DrawingApp {
 
@@ -16,7 +13,7 @@ public class DrawingApp {
 //		BeanFactory factory = new XmlBeanFactory(new FileSystemResource("spring.xml"));
 		//Tutorial 5
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
-		Triangle triangle = (Triangle) context.getBean("triangle"); 
+		Triangle triangle = (Triangle) context.getBean("ololo"); 
 		triangle.draw();
 
 	}

@@ -6,8 +6,18 @@
 
 	<bean id="triangle" class="org.sbelei.springdemo.Triangle">
 		<property name="pointA" ref="zeroPoint"/>
-		<property name="pointB" ref="point2"/>
-		<property name="pointC" ref="point3"/>
+		<property name="pointB">
+			<bean class="org.sbelei.springdemo.Point">
+				<property name="x" value="20"/>
+				<property name="y" value="0"/>
+			</bean>
+		</property>
+		<property name="pointC">
+			<bean class="org.sbelei.springdemo.Point">
+				<property name="x" value="0"/>
+				<property name="y" value="20"/>
+			</bean>
+		</property>
 	</bean>
 
 	<bean id="zeroPoint" class="org.sbelei.springdemo.Point">
@@ -15,13 +25,6 @@
 		<property name="y" value="0"/>
 	</bean>
 
-	<bean id="point2" class="org.sbelei.springdemo.Point">
-		<property name="x" value="20"/>
-		<property name="y" value="0"/>
-	</bean>
 
-	<bean id="point3" class="org.sbelei.springdemo.Point">
-		<property name="x" value="0"/>
-		<property name="y" value="20"/>
-	</bean>
+	<alias name="triangle" alias="ololo"/>
 </beans>
