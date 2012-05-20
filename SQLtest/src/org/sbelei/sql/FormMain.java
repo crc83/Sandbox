@@ -53,7 +53,7 @@ public class FormMain {
 				newCol.setHeaderValue(headers[i]);
 				table.addColumn(newCol);
 			}
-			table.
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

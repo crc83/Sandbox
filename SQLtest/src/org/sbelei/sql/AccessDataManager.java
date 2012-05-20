@@ -6,7 +6,15 @@ public class AccessDataManager {
 	
 	private Connection con;
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws SQLException{
+		String connectionString = null;
+		String password = null;
+		String userName = null;
+		Connection con = DriverManager.getConnection( connectionString ,userName,password);
+		Statement st = con.createStatement();
+		String stSql = "SELECT * FROM Employees";
+		ResultSet rs =st.executeQuery(stSql );
+		con.close();
 		AccessDataManager adm = new AccessDataManager();
 		try {
 			adm.initConnection();
@@ -32,15 +40,19 @@ public class AccessDataManager {
 		ResultSet rs =st.executeQuery(stSql);
 		return rs;
 	}
-
+	/*
+	 * jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=E:/PROJECTS/Sandbox/SQLtest/resources/Northwind.mdb;DriverID=22;READONLY=true}
+	 */
 	public void initConnection()
 			throws ClassNotFoundException, SQLException {
 		Class.forName("sun.jdbc.odbc.JdbcOdbcDriver"); // set this to a MS Access DB you have on your machine 
 		String filename = "E:/PROJECTS/Sandbox/SQLtest/resources/Northwind.mdb"; 
-		String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ="; 
-		database+= filename.trim() + ";DriverID=22;READONLY=true}"; // add on to the end  // now we can get the connection from the DriverManager 
+		String connectionString = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ="; 
+		connectionString+= filename.trim() + ";DriverID=22;READONLY=true}"; // add on to the end  // now we can get the connection from the DriverManager 
+		String userName ="";
+		String password ="";
 		
-		con = DriverManager.getConnection( database ,"","");
+		con = DriverManager.getConnection( connectionString ,userName,password);
 	}
 
 	public String[] composeHeaders(ResultSet rs) throws SQLException{
