@@ -5,7 +5,8 @@
 
 
 	<bean id="triangle" class="org.sbelei.springdemo.Triangle">
-		<property name="type" value="Euilateral"></property>
+		<constructor-arg value="Equi"/>
+		<constructor-arg value="13"/>
 	</bean>
 
 </beans>
