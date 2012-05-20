@@ -5,8 +5,23 @@
 
 
 	<bean id="triangle" class="org.sbelei.springdemo.Triangle">
-		<constructor-arg value="Equi"/>
-		<constructor-arg value="13"/>
+		<property name="pointA" ref="zeroPoint"/>
+		<property name="pointB" ref="point2"/>
+		<property name="pointC" ref="point3"/>
 	</bean>
 
+	<bean id="zeroPoint" class="org.sbelei.springdemo.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+
+	<bean id="point2" class="org.sbelei.springdemo.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+
+	<bean id="point3" class="org.sbelei.springdemo.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="20"/>
+	</bean>
 </beans>

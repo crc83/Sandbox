@@ -1,32 +1,39 @@
 package org.sbelei.springdemo;
 
 public class Triangle {
-	
-	private String type;
-	private int height;
 
-	public Triangle(String aType) {
-		type = aType;
+	private Point pointA;
+	private Point pointB;
+	private Point pointC;
+
+	public Point getPointA() {
+		return pointA;
 	}
 
-	public Triangle(String aType, int aHeight) {
-		type = aType;
-		height = aHeight;
+	public void setPointA(Point pointA) {
+		this.pointA = pointA;
 	}
 
-	public String getType() {
-		return type;
+	public Point getPointB() {
+		return pointB;
 	}
 
-	public int getHeight() {
-		return height;
+	public void setPointB(Point pointB) {
+		this.pointB = pointB;
+	}
+
+	public Point getPointC() {
+		return pointC;
+	}
+
+	public void setPointC(Point pointC) {
+		this.pointC = pointC;
 	}
 
 	public void draw(){
-		System.out.println("Triangle of ["+getType()+"] drawn whit height "+getHeight());
+		System.out.println("Triangle");
+		System.out.println("Point A ("+getPointA().getX()+";"+getPointA().getY()+")");
+		System.out.println("Point B ("+getPointB().getX()+";"+getPointB().getY()+")");
+		System.out.println("Point C ("+getPointC().getX()+";"+getPointC().getY()+")");
 	}
-
-//	public void setType(String arg0) {
-//		type = arg0;		
-//	}
 }
