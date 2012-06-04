@@ -1,7 +1,5 @@
 package org.sbelei.hibernate;
 
-import java.io.Console;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -22,6 +20,7 @@ public class Main {
 		session.beginTransaction();
 		session.save(user);
 		session.getTransaction().commit();
+
 //		UserDetails anotherUser = new UserDetails();
 //		anotherUser.setUserId(1);
 //		System.out.println(anotherUser.getUserId());
