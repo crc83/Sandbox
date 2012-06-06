@@ -4,27 +4,23 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="triangle" class="org.sbelei.springdemo.Triangle">
-		<property name="points">
-			<list>
-				<ref bean="zeroPoint"/>
-				<bean class="org.sbelei.springdemo.Point">
-					<property name="x" value="20"/>
-					<property name="y" value="0"/>
-				</bean>
-				<bean class="org.sbelei.springdemo.Point">
-					<property name="x" value="0"/>
-					<property name="y" value="20"/>
-				</bean>
-			</list>
-		</property>
+	<bean id="triangle" class="org.sbelei.springdemo.Triangle" autowire="byName">
 	</bean>
 
-	<bean id="zeroPoint" class="org.sbelei.springdemo.Point">
+	<bean id="pointA" class="org.sbelei.springdemo.Point">
 		<property name="x" value="0"/>
 		<property name="y" value="0"/>
 	</bean>
 
+	<bean id="pointB" class="org.sbelei.springdemo.Point">
+		<property name="x" value="20"/>
+		<property name="y" value="0"/>
+	</bean>
+
+	<bean id="pointC" class="org.sbelei.springdemo.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="20"/>
+	</bean>
 
 	<alias name="triangle" alias="ololo"/>
 </beans>
