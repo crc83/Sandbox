@@ -8,7 +8,7 @@ public class UserDetails {
 
 	@Id
 	private int userId;
-	
+
 	private String userName;
 
 	public UserDetails() {
