@@ -18,8 +18,8 @@ public class AccessDataManager {
 		AccessDataManager adm = new AccessDataManager();
 		try {
 			adm.initConnection();
-			ResultSet rs = adm.select("SELECT * FROM Employees");
-			ResultSetMetaData md = rs.getMetaData();
+			ResultSet rs1 = adm.select("SELECT * FROM Employees");
+			ResultSetMetaData md = rs1.getMetaData();
 			int columns = md.getColumnCount();
 			for (int i=1; i<=columns; i++){
 				System.out.println(md.getColumnName(i)+"["+md.getColumnTypeName(i)+"]");
