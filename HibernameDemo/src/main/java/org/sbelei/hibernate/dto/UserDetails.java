@@ -36,7 +36,7 @@ public class UserDetails {
 	 * @return the userName
 	 */
 	public String getUserName() {
-		return userName;
+		return userName+" from getter";
 	}
 
 	/**

@@ -12,7 +12,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		UserDetails user = new UserDetails();
-		user.setUserId(5);
+		user.setUserId(6);
 		user.setUserName("Fifth User");
 
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
