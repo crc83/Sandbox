@@ -1,18 +1,28 @@
 package org.sbelei.hibernate.dto;
 
-import javax.persistence.Column;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
-@Entity (name="USER_DETAILS")
+@Entity
+@Table (name="USER_DETAILS")
 public class UserDetails {
 
 	@Id
-	@Column (name="ID")
 	private int userId;
-
-	@Column (name="USER_NAME")
 	private String userName;
+	@Temporal(TemporalType.DATE)
+	private Date joindeDate;
+	@Transient
+	private String address;
+	@Lob
+	private String description;
 
 	public UserDetails() {
 
@@ -44,6 +54,30 @@ public class UserDetails {
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public Date getJoindeDate() {
+		return joindeDate;
+	}
+
+	public void setJoindeDate(Date joindeDate) {
+		this.joindeDate = joindeDate;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
