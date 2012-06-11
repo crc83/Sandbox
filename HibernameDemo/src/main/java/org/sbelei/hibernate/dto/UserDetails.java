@@ -2,7 +2,7 @@ package org.sbelei.hibernate.dto;
 
 import java.util.Date;
 
-import javax.annotation.Generated;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +11,6 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 @Table (name="USER_DETAILS")
@@ -20,7 +19,7 @@ public class UserDetails {
 	@Override
 	public String toString() {
 		return "UserDetails [userId=" + userId + ", userName=" + userName
-				+ ", joindeDate=" + joindeDate + ", address=" + address
+				+ ", joindeDate=" + joindeDate + ", address=" + getAddress()
 				+ ", description=" + description + "]";
 	}
 
@@ -32,8 +31,7 @@ public class UserDetails {
 	@Temporal(TemporalType.DATE)
 	private Date joindeDate;
 	
-	@Transient
-	private String address;
+	private Address address;
 	
 	@Lob
 	private String description;
@@ -78,20 +76,20 @@ public class UserDetails {
 		this.joindeDate = joindeDate;
 	}
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }
