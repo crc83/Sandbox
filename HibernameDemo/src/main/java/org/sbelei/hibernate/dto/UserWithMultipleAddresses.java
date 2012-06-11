@@ -1,5 +1,7 @@
 package org.sbelei.hibernate.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,10 +14,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table (name="USER_MULTIPLE")
@@ -29,14 +37,19 @@ public class UserWithMultipleAddresses {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue
 	private int userId;
 	private String userName;
 	
 	@Temporal(TemporalType.DATE)
 	private Date joindeDate;
 	@ElementCollection
-	private Set<Address> addresses = new HashSet<Address>();
+	@JoinTable(name="USER_ADDRESSES",
+			joinColumns = @JoinColumn(name="USER_ID"))
+	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
+	@CollectionId(columns = { @Column(name="ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type="long"))
+	private Collection<Address> addresses = new ArrayList<Address>();
+//	private Set<Address> addresses = new HashSet<Address>();
 	
 	@Lob
 	private String description;
@@ -89,11 +102,11 @@ public class UserWithMultipleAddresses {
 		this.description = description;
 	}
 
-	public Set<Address> getAddresses() {
+	public Collection<Address> getAddresses() {
 		return addresses;
 	}
 
-	public void setAddresses(Set<Address> addresses) {
+	public void setAddresses(Collection<Address> addresses) {
 		this.addresses = addresses;
 	}
 
