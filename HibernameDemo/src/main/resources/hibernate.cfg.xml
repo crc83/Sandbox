@@ -14,5 +14,7 @@
   <property name="hibernate.format_sql">false</property>
   <mapping class="org.sbelei.hibernate.dto.UserDetails"/>
   <mapping class="org.sbelei.hibernate.dto.UserWithMultipleAddresses"/>
+  <mapping class="org.sbelei.hibernate.dto.Vehicle"/>
+  <mapping class="org.sbelei.hibernate.dto.UserWithVehicle"/>
  </session-factory>
 </hibernate-configuration>

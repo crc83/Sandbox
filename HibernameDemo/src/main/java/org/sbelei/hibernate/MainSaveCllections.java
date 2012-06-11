@@ -9,6 +9,11 @@ import org.sbelei.hibernate.dto.Address;
 import org.sbelei.hibernate.dto.UserDetails;
 import org.sbelei.hibernate.dto.UserWithMultipleAddresses;
 
+/**
+ * One to one sample
+ * @author Sergiy Beley
+ *
+ */
 public class MainSaveCllections {
 
 	/**
@@ -58,6 +63,8 @@ public class MainSaveCllections {
 		session.beginTransaction();
 		UserWithMultipleAddresses readUser = (UserWithMultipleAddresses) session.get(UserWithMultipleAddresses.class, firstUser.getUserId());//1 is a primary key
 		System.out.println(readUser.toString());
+		session.close(); //Uncoment this to check lazy initialization (we set EAGER initialization now)
+		System.out.println(readUser.getAddresses().size());
 //		UserDetails anotherUser = new UserDetails();
 //		anotherUser.setUserId(1);
 //		System.out.println(anotherUser.getUserId());
