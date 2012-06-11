@@ -13,5 +13,6 @@
   <property name="hibernate.use_sql_comments">true</property>
   <property name="hibernate.format_sql">false</property>
   <mapping class="org.sbelei.hibernate.dto.UserDetails"/>
+  <mapping class="org.sbelei.hibernate.dto.UserWithMultipleAddresses"/>
  </session-factory>
 </hibernate-configuration>
