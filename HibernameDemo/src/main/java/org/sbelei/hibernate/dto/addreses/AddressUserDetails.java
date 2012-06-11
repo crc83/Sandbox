@@ -1,45 +1,61 @@
-package org.sbelei.hibernate.dto;
+package org.sbelei.hibernate.dto.addreses;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 @Entity
-@Table (name="USER_WITH_VEHICLE")
-public class UserWithVehicle {
+@Table (name="USER_MULTIPLE")
+public class AddressUserDetails {
+
+	@Override
+	public String toString() {
+		return "UserWithMultipleAddresses [userId=" + userId + ", userName="
+				+ userName + ", joindeDate=" + joindeDate + ", addresses="
+				+ addresses + ", description=" + description + "]";
+	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue
 	private int userId;
 	private String userName;
 	
 	@Temporal(TemporalType.DATE)
 	private Date joindeDate;
-	
-	@OneToMany
-	@JoinTable(name="USER_VEHICLE" ,joinColumns=@JoinColumn(name="USER_ID"),
-			inverseJoinColumns=@JoinColumn(name="VEHICLE_ID"))
-	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
+	@ElementCollection(fetch=FetchType.EAGER)
+	@JoinTable(name="USER_ADDRESSES",
+			joinColumns = @JoinColumn(name="USER_ID"))
+	@GenericGenerator(name = "hilo-gen", strategy = "hilo")
+	@CollectionId(columns = { @Column(name="ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type="long"))
+	private Collection<Address> addresses = new ArrayList<Address>();
+//	private Set<Address> addresses = new HashSet<Address>();
 	
 	@Lob
 	private String description;
 
-	public UserWithVehicle() {
+	public AddressUserDetails() {
 
 	}
 
@@ -87,12 +103,12 @@ public class UserWithVehicle {
 		this.description = description;
 	}
 
-	public Collection<Vehicle> getVehicle() {
-		return vehicle;
+	public Collection<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setVehicle(Collection<Vehicle> vehicle) {
-		this.vehicle = vehicle;
+	public void setAddresses(Collection<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 }

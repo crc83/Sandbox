@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.sbelei.hibernate.dto.addreses.Address;
+
 @Entity
 @Table (name="USER_DETAILS")
 public class UserDetails {

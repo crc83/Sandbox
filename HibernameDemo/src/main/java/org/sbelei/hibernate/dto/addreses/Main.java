@@ -1,19 +1,17 @@
-package org.sbelei.hibernate;
+package org.sbelei.hibernate.dto.addreses;
 
 import java.util.Date;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.sbelei.hibernate.dto.UserWithVehicle;
-import org.sbelei.hibernate.dto.Vehicle;
 
 /**
- * One to many sample
+ * One to one sample
  * @author Sergiy Beley
  *
  */
-public class MainOneToMany {
+public class Main {
 
 	/**
 	 * @param args
@@ -21,20 +19,31 @@ public class MainOneToMany {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		
-		Vehicle vehicleCar =  new Vehicle();
-		vehicleCar.setVehicleName("VAZ-2101");
+		Address firstUserAddress =  new Address();
+		firstUserAddress.setCity("Ivano-Frankivsk");
+		firstUserAddress.setState("Ukraine");
+		firstUserAddress.setStreet("Voloshyna");
 		
-		Vehicle vehicleJeep =  new Vehicle();
-		vehicleJeep.setVehicleName("Jeep");
+		Address secondUserAddress = new Address();
+		secondUserAddress.setCity("Kalush");
+		secondUserAddress.setState("Ukraine");
+		secondUserAddress.setStreet("S.Strilciv");
 		
-		
-		UserWithVehicle firstUser = new UserWithVehicle();
+		AddressUserDetails firstUser = new AddressUserDetails();
 		//user.setUserId(1);
 		firstUser.setUserName("First User");
-		firstUser.getVehicle().add(vehicleCar);
-		firstUser.getVehicle().add(vehicleJeep);
+		firstUser.getAddresses().add(firstUserAddress);
+		firstUser.getAddresses().add(secondUserAddress);
 		firstUser.setJoindeDate(new Date());
 		firstUser.setDescription("FU description");
+
+		AddressUserDetails secondUser = new AddressUserDetails();
+		//user.setUserId(1);
+		secondUser.setUserName("Second User");
+		secondUser.getAddresses().add(secondUserAddress);
+		secondUser.getAddresses().add(firstUserAddress);
+		secondUser.setJoindeDate(new Date());
+		secondUser.setDescription("SE description");
 
 		//Initialization
 		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -43,17 +52,16 @@ public class MainOneToMany {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(firstUser);
-		session.save(vehicleCar);
-		session.save(vehicleJeep);
+		session.save(secondUser);
 		session.getTransaction().commit();
 
 		//reading data by Hibernate
 		session = sessionFactory.openSession();
 		session.beginTransaction();
-		UserWithVehicle readUser = (UserWithVehicle) session.get(UserWithVehicle.class, firstUser.getUserId());//1 is a primary key
+		AddressUserDetails readUser = (AddressUserDetails) session.get(AddressUserDetails.class, firstUser.getUserId());//1 is a primary key
 		System.out.println(readUser.toString());
 		session.close(); //Uncoment this to check lazy initialization (we set EAGER initialization now)
-		System.out.println(readUser.getVehicle().size());
+		System.out.println(readUser.getAddresses().size());
 //		UserDetails anotherUser = new UserDetails();
 //		anotherUser.setUserId(1);
 //		System.out.println(anotherUser.getUserId());

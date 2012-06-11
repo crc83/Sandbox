@@ -1,20 +1,13 @@
-package org.sbelei.hibernate;
+package org.sbelei.hibernate.dto;
 
 import java.util.Date;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.sbelei.hibernate.dto.Address;
-import org.sbelei.hibernate.dto.UserDetails;
-import org.sbelei.hibernate.dto.UserWithMultipleAddresses;
+import org.sbelei.hibernate.dto.addreses.Address;
 
-/**
- * One to one sample
- * @author Sergiy Beley
- *
- */
-public class MainSaveCllections {
+public class Main {
 
 	/**
 	 * @param args
@@ -32,19 +25,19 @@ public class MainSaveCllections {
 		secondUserAddress.setState("Ukraine");
 		secondUserAddress.setStreet("S.Strilciv");
 		
-		UserWithMultipleAddresses firstUser = new UserWithMultipleAddresses();
+		UserDetails firstUser = new UserDetails();
 		//user.setUserId(1);
 		firstUser.setUserName("First User");
-		firstUser.getAddresses().add(firstUserAddress);
-		firstUser.getAddresses().add(secondUserAddress);
+		firstUser.setAddress(firstUserAddress);
+		firstUser.setOfficeAddress(secondUserAddress);
 		firstUser.setJoindeDate(new Date());
 		firstUser.setDescription("FU description");
 
-		UserWithMultipleAddresses secondUser = new UserWithMultipleAddresses();
+		UserDetails secondUser = new UserDetails();
 		//user.setUserId(1);
 		secondUser.setUserName("Second User");
-		secondUser.getAddresses().add(secondUserAddress);
-		secondUser.getAddresses().add(firstUserAddress);
+		secondUser.setAddress(secondUserAddress);
+		secondUser.setOfficeAddress(firstUserAddress);
 		secondUser.setJoindeDate(new Date());
 		secondUser.setDescription("SE description");
 
@@ -61,10 +54,8 @@ public class MainSaveCllections {
 		//reading data by Hibernate
 		session = sessionFactory.openSession();
 		session.beginTransaction();
-		UserWithMultipleAddresses readUser = (UserWithMultipleAddresses) session.get(UserWithMultipleAddresses.class, firstUser.getUserId());//1 is a primary key
+		UserDetails readUser = (UserDetails) session.get(UserDetails.class, firstUser.getUserId());//1 is a primary key
 		System.out.println(readUser.toString());
-		session.close(); //Uncoment this to check lazy initialization (we set EAGER initialization now)
-		System.out.println(readUser.getAddresses().size());
 //		UserDetails anotherUser = new UserDetails();
 //		anotherUser.setUserId(1);
 //		System.out.println(anotherUser.getUserId());

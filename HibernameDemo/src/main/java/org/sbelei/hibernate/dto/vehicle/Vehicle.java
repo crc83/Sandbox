@@ -1,4 +1,6 @@
-package org.sbelei.hibernate.dto;
+package org.sbelei.hibernate.dto.vehicle;
+
+import java.util.ArrayList;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
