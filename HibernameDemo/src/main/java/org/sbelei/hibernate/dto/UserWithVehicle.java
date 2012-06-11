@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,6 +32,8 @@ public class UserWithVehicle {
 	private Date joindeDate;
 	
 	@OneToMany
+	@JoinTable(name="USER_VEHICLE" ,joinColumns=@JoinColumn(name="USER_ID"),
+			inverseJoinColumns=@JoinColumn(name="VEHICLE_ID"))
 	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 	
 	@Lob
