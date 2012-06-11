@@ -27,6 +27,10 @@ public class Main {
 		session.save(user);
 		session.getTransaction().commit();
 
+		session = sessionFactory.openSession();
+		session.beginTransaction();
+		UserDetails readUser = (UserDetails) session.get(UserDetails.class, 1);//1 is a primary key
+		System.out.println(readUser.toString());
 //		UserDetails anotherUser = new UserDetails();
 //		anotherUser.setUserId(1);
 //		System.out.println(anotherUser.getUserId());

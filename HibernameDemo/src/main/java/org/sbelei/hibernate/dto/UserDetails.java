@@ -14,13 +14,23 @@ import javax.persistence.Transient;
 @Table (name="USER_DETAILS")
 public class UserDetails {
 
+	@Override
+	public String toString() {
+		return "UserDetails [userId=" + userId + ", userName=" + userName
+				+ ", joindeDate=" + joindeDate + ", address=" + address
+				+ ", description=" + description + "]";
+	}
+
 	@Id
 	private int userId;
 	private String userName;
+	
 	@Temporal(TemporalType.DATE)
 	private Date joindeDate;
+	
 	@Transient
 	private String address;
+	
 	@Lob
 	private String description;
 
