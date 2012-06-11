@@ -15,28 +15,30 @@ public class Main {
 	 */
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
-		UserDetails firstUser = new UserDetails();
-		//user.setUserId(1);
-		firstUser.setUserName("First User");
+		
 		Address firstUserAddress =  new Address();
-		//DONE SB : Fill adderess for user 1
 		firstUserAddress.setCity("Ivano-Frankivsk");
 		firstUserAddress.setState("Ukraine");
 		firstUserAddress.setStreet("Voloshyna");
+		
+		Address secondUserAddress = new Address();
+		secondUserAddress.setCity("Kalush");
+		secondUserAddress.setState("Ukraine");
+		secondUserAddress.setStreet("S.Strilciv");
+		
+		UserDetails firstUser = new UserDetails();
+		//user.setUserId(1);
+		firstUser.setUserName("First User");
 		firstUser.setAddress(firstUserAddress);
+		firstUser.setOfficeAddress(secondUserAddress);
 		firstUser.setJoindeDate(new Date());
 		firstUser.setDescription("FU description");
 
 		UserDetails secondUser = new UserDetails();
 		//user.setUserId(1);
 		secondUser.setUserName("Second User");
-		Address secondUserAddress = new Address();
-		//DONE SB : Fill adderess for user 2
-		secondUserAddress.setCity("Kalush");
-		secondUserAddress.setState("Ukraine");
-		secondUserAddress.setStreet("S.Strilciv");
-		
 		secondUser.setAddress(secondUserAddress);
+		secondUser.setOfficeAddress(firstUserAddress);
 		secondUser.setJoindeDate(new Date());
 		secondUser.setDescription("SE description");
 
