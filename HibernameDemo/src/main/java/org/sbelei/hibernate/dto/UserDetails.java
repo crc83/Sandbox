@@ -2,7 +2,9 @@ package org.sbelei.hibernate.dto;
 
 import java.util.Date;
 
+import javax.annotation.Generated;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -22,6 +24,7 @@ public class UserDetails {
 	}
 
 	@Id
+	@GeneratedValue
 	private int userId;
 	private String userName;
 	
