@@ -3,6 +3,8 @@ package org.sbelei.hibernate.dto;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.sbelei.hibernate.dto.addreses.Address;
+
 @Entity
 public class UserDetails {
 

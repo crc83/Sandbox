@@ -1,4 +1,4 @@
-package org.sbelei.hibernate.dto;
+package org.sbelei.hibernate.dto.vehicle;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -19,7 +21,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table (name="USER_WITH_VEHICLE")
-public class UserWithVehicle {
+public class VehicleUserDetails {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
@@ -30,12 +32,14 @@ public class UserWithVehicle {
 	private Date joindeDate;
 	
 	@OneToMany
+	@JoinTable(name="USER_VEHICLE" ,joinColumns=@JoinColumn(name="USER_ID"),
+			inverseJoinColumns=@JoinColumn(name="VEHICLE_ID"))
 	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 	
 	@Lob
 	private String description;
 
-	public UserWithVehicle() {
+	public VehicleUserDetails() {
 
 	}
 

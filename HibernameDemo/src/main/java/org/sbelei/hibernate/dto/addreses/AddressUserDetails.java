@@ -1,4 +1,4 @@
-package org.sbelei.hibernate.dto;
+package org.sbelei.hibernate.dto.addreses;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,7 +28,7 @@ import org.hibernate.annotations.Type;
 
 @Entity
 @Table (name="USER_MULTIPLE")
-public class UserWithMultipleAddresses {
+public class AddressUserDetails {
 
 	@Override
 	public String toString() {
@@ -55,7 +55,7 @@ public class UserWithMultipleAddresses {
 	@Lob
 	private String description;
 
-	public UserWithMultipleAddresses() {
+	public AddressUserDetails() {
 
 	}
 

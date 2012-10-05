@@ -1,0 +1,9 @@
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2012-09-26 00:23:06
+help
+help web jsf setup
+hint web jsf setup
+hint web
+hint
+project --topLevelPackage org.sbelei
+web jsf setup
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2012-09-26 00:38:56

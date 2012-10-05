@@ -1,20 +1,17 @@
-package org.sbelei.hibernate;
+package org.sbelei.hibernate.dto.addreses;
 
 import java.util.Date;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.sbelei.hibernate.dto.Address;
-import org.sbelei.hibernate.dto.UserDetails;
-import org.sbelei.hibernate.dto.UserWithMultipleAddresses;
 
 /**
  * One to one sample
  * @author Sergiy Beley
  *
  */
-public class MainSaveCllections {
+public class Main {
 
 	/**
 	 * @param args
@@ -32,7 +29,7 @@ public class MainSaveCllections {
 		secondUserAddress.setState("Ukraine");
 		secondUserAddress.setStreet("S.Strilciv");
 		
-		UserWithMultipleAddresses firstUser = new UserWithMultipleAddresses();
+		AddressUserDetails firstUser = new AddressUserDetails();
 		//user.setUserId(1);
 		firstUser.setUserName("First User");
 		firstUser.getAddresses().add(firstUserAddress);
@@ -40,7 +37,7 @@ public class MainSaveCllections {
 		firstUser.setJoindeDate(new Date());
 		firstUser.setDescription("FU description");
 
-		UserWithMultipleAddresses secondUser = new UserWithMultipleAddresses();
+		AddressUserDetails secondUser = new AddressUserDetails();
 		//user.setUserId(1);
 		secondUser.setUserName("Second User");
 		secondUser.getAddresses().add(secondUserAddress);
@@ -61,7 +58,7 @@ public class MainSaveCllections {
 		//reading data by Hibernate
 		session = sessionFactory.openSession();
 		session.beginTransaction();
-		UserWithMultipleAddresses readUser = (UserWithMultipleAddresses) session.get(UserWithMultipleAddresses.class, firstUser.getUserId());//1 is a primary key
+		AddressUserDetails readUser = (AddressUserDetails) session.get(AddressUserDetails.class, firstUser.getUserId());//1 is a primary key
 		System.out.println(readUser.toString());
 		session.close(); //Uncoment this to check lazy initialization (we set EAGER initialization now)
 		System.out.println(readUser.getAddresses().size());

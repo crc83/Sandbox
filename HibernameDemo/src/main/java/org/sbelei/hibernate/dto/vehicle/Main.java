@@ -1,19 +1,17 @@
-package org.sbelei.hibernate;
+package org.sbelei.hibernate.dto.vehicle;
 
 import java.util.Date;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.sbelei.hibernate.dto.UserWithVehicle;
-import org.sbelei.hibernate.dto.Vehicle;
 
 /**
  * One to many sample
  * @author Sergiy Beley
  *
  */
-public class MainOneToMany {
+public class Main {
 
 	/**
 	 * @param args
@@ -28,7 +26,7 @@ public class MainOneToMany {
 		vehicleJeep.setVehicleName("Jeep");
 		
 		
-		UserWithVehicle firstUser = new UserWithVehicle();
+		VehicleUserDetails firstUser = new VehicleUserDetails();
 		//user.setUserId(1);
 		firstUser.setUserName("First User");
 		firstUser.getVehicle().add(vehicleCar);
@@ -50,7 +48,7 @@ public class MainOneToMany {
 		//reading data by Hibernate
 		session = sessionFactory.openSession();
 		session.beginTransaction();
-		UserWithVehicle readUser = (UserWithVehicle) session.get(UserWithVehicle.class, firstUser.getUserId());//1 is a primary key
+		VehicleUserDetails readUser = (VehicleUserDetails) session.get(VehicleUserDetails.class, firstUser.getUserId());//1 is a primary key
 		System.out.println(readUser.toString());
 		session.close(); //Uncoment this to check lazy initialization (we set EAGER initialization now)
 		System.out.println(readUser.getVehicle().size());

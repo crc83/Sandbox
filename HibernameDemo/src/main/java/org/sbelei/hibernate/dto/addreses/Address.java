@@ -1,4 +1,4 @@
-package org.sbelei.hibernate.dto;
+package org.sbelei.hibernate.dto.addreses;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
