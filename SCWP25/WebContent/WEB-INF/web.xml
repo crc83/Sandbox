@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>MemorizeSession</display-name>
+    <servlet-name>MemorizeSession</servlet-name>
+    <servlet-class>org.sbelei.MemorizeSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemorizeSession</servlet-name>
+    <url-pattern>/MemorizeSession</url-pattern>
+  </servlet-mapping>
 </web-app>
