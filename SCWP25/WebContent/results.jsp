@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello!  The time is now <%= new java.util.Date() %>
+Hello!  The time is now 
 </body>
 </html>
