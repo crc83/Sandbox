@@ -2,6 +2,12 @@ package org.sbelei;
 
 public class Employee implements Person {
 
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", gender=" + gender + ", phone="
+				+ phone + ", age=" + age + ", email=" + email + "]";
+	}
+	
 	private String name;
 	private String gender;
 	private String phone;
