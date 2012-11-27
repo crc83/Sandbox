@@ -11,7 +11,15 @@
 <jsp:useBean id="employee" type="org.sbelei.Person" class="org.sbelei.Employee">
 	<jsp:setProperty name="employee" property="*"/>
 </jsp:useBean>
-Employee: <%= employee %>
+<table>
+	<tr><td>Employee:</td><td>${employee.name}</td></tr>
+	<tr><td>Gender:</td><td>${employee.gender}</td></tr>
+	<tr><td>Phone:</td><td>${employee["phone"]}</td></tr>
+	<tr><td>Manager name:</td><td>${employee["manager"].name}</td></tr>
+	<tr><td>Manager name:</td><td>${employee["manager"]["name"]}</td></tr>
+</table>
+<hr>
+ <%= employee %>
 <jsp:include page="footer.html"></jsp:include>
 </body>
 </html>

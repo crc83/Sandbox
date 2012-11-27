@@ -3,6 +3,7 @@
 	<name>SCWP25</name>
 	<comment></comment>
 	<projects>
+		<project>javafaker</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

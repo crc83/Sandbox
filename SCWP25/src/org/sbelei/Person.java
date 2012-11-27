@@ -21,5 +21,9 @@ public interface Person {
 	public abstract String getEmail();
 
 	public abstract void setEmail(String email);
+	
+	public Person getManager();
+	
+	public void setManager(Person aManager);
 
 }

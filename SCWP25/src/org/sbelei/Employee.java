@@ -13,6 +13,8 @@ public class Employee implements Person {
 	private String phone;
 	private int age;
 	private String email;
+	private Person manager;
+	
 	
 	/* (non-Javadoc)
 	 * @see org.sbelei.Person#getName()
@@ -83,5 +85,15 @@ public class Employee implements Person {
 	@Override
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public Person getManager() {
+		manager = new Employee();
+		manager.setName("no manager");
+		return manager;
+	}
+	
+	public void setManager(Person manager) {
+		this.manager = manager;
 	}
 }

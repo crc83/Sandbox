@@ -11,4 +11,14 @@
     <servlet-name>MemorizeSession</servlet-name>
     <url-pattern>/MemorizeSession</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListOfPersons</display-name>
+    <servlet-name>ListOfPersons</servlet-name>
+    <servlet-class>org.sbelei.ListOfPersons</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListOfPersons</servlet-name>
+    <url-pattern>/ListOfPersons</url-pattern>
+  </servlet-mapping>
 </web-app>
