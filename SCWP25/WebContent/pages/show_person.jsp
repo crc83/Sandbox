@@ -7,9 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <jsp:useBean id="employee" type="org.sbelei.Person" class="org.sbelei.Employee">
 	<jsp:setProperty name="employee" property="*"/>
 </jsp:useBean>
 Employee: <%= employee %>
+<jsp:include page="footer.html"></jsp:include>
 </body>
 </html>
