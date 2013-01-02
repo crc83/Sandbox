@@ -1,5 +1,5 @@
 # app.rb
-set :haml, :format =&gt; :html5
+set :haml, :format => :html5
  
 get "/" do
   haml :index

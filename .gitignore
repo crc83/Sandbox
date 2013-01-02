@@ -1,4 +1,5 @@
-
+*~
+*.lock
 /SpringDemo/bin/context.xml
 /HibernameDemo/target
 /SpringDemo/target
