@@ -1,5 +1,8 @@
 *~
 *.lock
+*/build
+*/bin
+*/target
 /SpringDemo/bin/context.xml
 /HibernameDemo/target
 /SpringDemo/target
