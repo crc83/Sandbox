@@ -7,3 +7,11 @@ hint
 project --topLevelPackage org.sbelei
 web jsf setup
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2012-09-26 00:38:56
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2012-12-17 01:38:14
+help
+web jsf setup
+help
+hint
+jpa setup --provider HIBERNATE --database MYSQL
+entity jpa --class ~.domain.Pizza --activeRecord false
+field number --fieldName strength --type double
