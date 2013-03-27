@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Message : ${message}</h1>	
+	<h1>Message : ${message}</h1>
+	<input type="text" name="zipCode" id="zipCode" data-validator="maxLength-10" value="${app.zipCode}" />	
 </body>
 </html>
