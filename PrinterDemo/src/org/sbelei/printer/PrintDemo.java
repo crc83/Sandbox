@@ -3,6 +3,8 @@ package org.sbelei.printer;
 import java.awt.Graphics;
 import java.awt.print.*;
 
+import javax.print.attribute.PrintRequestAttributeSet;
+
 public class PrintDemo {
 
 	public static void main(String[] args) throws PrinterException {
@@ -18,6 +20,7 @@ public class PrintDemo {
 			    }
 				
 				graphics.drawString("Hello world", 10, 10);
+				
 				return PAGE_EXISTS;
 			}
 		});
