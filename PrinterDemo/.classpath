@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/html2image-0.9.jar" sourcepath="lib/html2image-0.9-sources.jar"/>
+	<classpathentry kind="lib" path="lib/core-renderer-minimal.jar" sourcepath="C:/Downloads/Архивы/flyingsaucer-R8.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
